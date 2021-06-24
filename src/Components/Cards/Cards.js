@@ -12,7 +12,7 @@ const Cards = ({ gitInfo }) => {
         display = gitInfo.map(git => {
             return (<div className={classes.CardsContainer}>
                 <div className={classes.LeftSide}>
-                    <div className={classes.Description}>{git.description === null ? <p>No Description </p> : <p>{git.description}</p>}</div>
+                    <div className={classes.Description}>{git.description === null ? "No Description" : `${git.description}`}</div>
                     <div className={classes.Author}>{git.Author}</div>
                     <div className={classes.Title}>{git.Title}</div>
                 </div>

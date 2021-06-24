@@ -4,7 +4,8 @@
     height: 224px;
     background-color: white;
     padding: 10px;
-    margin-bottom: 4rem;
+    margin-bottom: 10rem;
+    margin-left: 25%;
     border-radius: 16px;
 
 }
@@ -22,6 +23,8 @@
 
 .Description {
     padding-left: 10px;
+    margin: 0px;
+
 
 }
 
@@ -32,3 +35,7 @@
 .Title {
     padding-left: 10px;
 }
+
+/* .Forks, .Stars, .Issues {
+    padding-top: 2.5px;
+} */
