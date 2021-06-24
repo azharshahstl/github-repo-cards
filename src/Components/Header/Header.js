@@ -12,7 +12,7 @@ const Header = () => {
                     <img src={Octocat} alt="Octo Cat" />
                 </li>
                 <li>
-                    <NavLink to="/" activeClassName={classes.active} >Input Field</NavLink>
+                    <NavLink to="/welcome" activeClassName={classes.active} >Input Field</NavLink>
                 </li>
                 <li>
                     <NavLink to="/cards" activeClassName={classes.active} >Repo Cards</NavLink>

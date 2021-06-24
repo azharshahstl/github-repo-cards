@@ -13,7 +13,7 @@ function App() {
   const [require, setRequire] = useState("");
   const [actionDisplay, setActionDisplay] = useState("default");
   const [disable, setDisable] = useState(true);
-  const [githubInfo, setGithubInfo] = useState([])
+  const [gitInfo, setGitInfo] = useState([])
 
   const handleOnBlur = () => {
     if (gitName.length === 0) {
@@ -43,6 +43,27 @@ function App() {
     }
   }
 
+  const createsInfoArray = (data) => {
+    const githubInfo = data.map((d) => {
+      let info = {
+        description: "",
+        Author: "",
+        Title: "",
+        forks: 0,
+        stars: 0,
+        open_issues: 0
+      };
+      info.description = d.description;
+      info.Author = d.owner.login;
+      info.Title = d.name;
+      info.forks = d.forks;
+      info.stars = d.stargazers_count;
+      info.open_issues = d.open_issues;
+      return info
+    })
+    setGitInfo(githubInfo)
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault()
     fetch(`https://api.github.com/users/${gitName}`)
@@ -50,16 +71,11 @@ function App() {
       .then((userName) => {
         if (userName.message === "Not Found") {
           setActionDisplay("failure");
-          // setMenuItems([]);
         } else {
           fetch(`https://api.github.com/users/${userName.login}/repos`)
             .then((response) => response.json())
             .then((data) => {
-              console.log(data)
-              debugger
-              const urls = data.map((d) => d.html_url);
-              // setMenuItems([...urls]);
-              // setMessage("");
+              createsInfoArray(data);
             });
         }
       })
@@ -73,7 +89,7 @@ function App() {
     <div className="App">
       <form>
         <Header />
-        <Route exact path="/">
+        <Route exact path="/welcome">
           <InputComponent
             gitName={gitName}
             typing={typing}
@@ -85,8 +101,12 @@ function App() {
           <Button submit={handleSubmit} disable={disable} />
         </Route>
         <Route exact path="/cards">
-          <Cards />
+          <Cards gitInfo={gitInfo} />
         </Route>
+
+
+
+
       </form>
     </div>
   );
