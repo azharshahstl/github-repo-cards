@@ -1,0 +1,112 @@
+.InputDiv {
+    display: flex;
+    flex-direction: column;
+    font-family: inherit;
+    align-items: center;
+  }
+  
+  .InputLabel {
+    font-weight: 400;
+    line-height: 24px;
+    width: 460px;
+    height: 24px;
+    color: #6f7482;
+    font-size: 16px;
+  }
+  
+  .Input {
+    width: 436px;
+    height: 48px;
+    padding: 12px;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 4px;
+    font-family: "IBM Plex Sans", sans-serif;
+    color: white;
+    border-style: none;
+    outline: none;
+    background-color: rgb(157, 182, 236);
+  }
+  
+  .Input::-webkit-input-placeholder {
+    color: white;
+  }
+  
+  .Required {
+    color: #52575c;
+    width: 460px;
+    height: 24px;
+    font-size: 16px;
+    margin: 0px;
+  }
+  
+  .AddAstericks {
+    font-weight: 400;
+    line-height: 24px;
+    width: 460px;
+    height: 24px;
+    color: #6f7482;
+    font-size: 16px;
+  }
+  
+  .AddAstericks:after {
+    content: " *";
+    color: red;
+  }
+  
+  .Input[typing="true"] {
+    width: 436px;
+    height: 48px;
+    padding: 12px;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 4px;
+    font-family: "IBM Plex Sans", sans-serif;
+    color: #b8bcca;
+    outline: none;
+    border: 2px solid blue;
+  }
+  
+  .Success {
+    width: 436px;
+    height: 48px;
+    padding: 12px;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 4px;
+    font-family: "IBM Plex Sans", sans-serif;
+    color: #b8bcca;
+    outline: none;
+    border: 2px solid green;
+  }
+  
+  .SuccessMessage {
+    width: 460px;
+    height: 16px;
+    font-size: 12px;
+    line-height: 15.6px;
+    color: green;
+    margin-top: 0px;
+  }
+  
+  .Failure {
+    width: 436px;
+    height: 48px;
+    padding: 12px;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 4px;
+    font-family: "IBM Plex Sans", sans-serif;
+    color: #b8bcca;
+    outline: none;
+    border: 2px solid red;
+  }
+  
+  .FailureMessage {
+    width: 460px;
+    height: 16px;
+    font-size: 12px;
+    line-height: 15.6px;
+    color: red;
+    margin-top: 0px;
+  }

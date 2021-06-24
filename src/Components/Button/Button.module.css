@@ -1,0 +1,26 @@
+.LargeButtonDiv {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .LargeButton {
+    font-family: "IBM Plex Sans", sans-serif;
+    line-height: 24px;
+    padding: 4px 16px;
+    background-color: #0048d9;
+    width: 100px;
+    height: 48px;
+    border-radius: 6px;
+    color: white;
+  }
+  
+  .LargeButton:hover {
+    width: 81px;
+    background: #002266;
+  }
+  
+  .LargeButton:disabled {
+    width: 105px;
+    background-color: rgba(0, 72, 217, 1);
+  }
