@@ -9,13 +9,14 @@ import Button from './Components/Button/Button'
 function App() {
 
   const [typing, setTyping] = useState(false);
-  const [value, setValue] = useState("");
+  const [gitName, setGitName] = useState("");
   const [require, setRequire] = useState("");
   const [actionDisplay, setActionDisplay] = useState("default");
   const [disable, setDisable] = useState(true);
+  const [githubInfo, setGithubInfo] = useState([])
 
   const handleOnBlur = () => {
-    if (value.length === 0) {
+    if (gitName.length === 0) {
       setRequire("Required");
       setDisable(true);
     } else {
@@ -27,43 +28,66 @@ function App() {
   const handleOnFocus = () => {
     setActionDisplay("default");
     setRequire("");
-    if (value.length > 0) {
+    if (gitName.length > 0) {
       setDisable(false);
     }
   }
 
   const handleOnChange = (event) => {
-    setValue(event.target.value);
+    setGitName(event.target.value);
     if (event.target.value.length > 0) {
       setDisable(false);
     } else {
       setDisable(true);
+      setRequire("Required");
     }
   }
 
-  const handleSubmit = () => {
-
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    fetch(`https://api.github.com/users/${gitName}`)
+      .then((response) => response.json())
+      .then((userName) => {
+        if (userName.message === "Not Found") {
+          setActionDisplay("failure");
+          // setMenuItems([]);
+        } else {
+          fetch(`https://api.github.com/users/${userName.login}/repos`)
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data)
+              debugger
+              const urls = data.map((d) => d.html_url);
+              // setMenuItems([...urls]);
+              // setMessage("");
+            });
+        }
+      })
   }
+
+
+
 
 
   return (
     <div className="App">
-      <Header />
-      <Route exact path="/">
-        <InputComponent
-          value={value}
-          typing={typing}
-          require={require}
-          actionDisplay={actionDisplay}
-          blur={handleOnBlur}
-          change={handleOnChange}
-          focus={handleOnFocus} />
-        <Button submit={handleSubmit} disable={disable} />
-      </Route>
-      <Route exact path="/cards">
-        <Cards />
-      </Route>
-
+      <form>
+        <Header />
+        <Route exact path="/">
+          <InputComponent
+            gitName={gitName}
+            typing={typing}
+            require={require}
+            actionDisplay={actionDisplay}
+            blur={handleOnBlur}
+            change={handleOnChange}
+            focus={handleOnFocus} />
+          <Button submit={handleSubmit} disable={disable} />
+        </Route>
+        <Route exact path="/cards">
+          <Cards />
+        </Route>
+      </form>
     </div>
   );
 }

@@ -11,7 +11,7 @@ const InputComponent = (props) => {
                 typing={props.typing}
                 id="answer"
                 placeholder="Your answer"
-                value={props.value}
+                value={props.gitName}
                 onBlur={props.blur}
                 onChange={props.change}
                 onFocus={props.focus} />
@@ -23,18 +23,18 @@ const InputComponent = (props) => {
                 typing={props.typing}
                 id="answer"
                 placeholder="Your answer"
-                value={props.value}
+                value={props.gitName}
                 onBlur={props.blur}
                 onChange={props.change}
                 onFocus={props.focus} />
-            <p className={classes.FailureMessage}>You have failed me for the last time.</p>
+            <p className={classes.FailureMessage}>No User Found</p>
         </>
     } else if (props.actionDisplay === "default" || props.actionDisplay === "typing") {
         checkForSuccess = <input type="text" className={classes.Input}
             typing={props.typing}
             id="answer"
             placeholder="Your answer"
-            value={props.value}
+            value={props.gitName}
             onBlur={props.blur}
             onChange={props.change}
             onFocus={props.focus} />

@@ -23,5 +23,5 @@
   
   .LargeButton:disabled {
     background-color: rgba(0, 72, 217, 1);
-    transform: translateX(-500%);
+    transform: translateX(-800%);
   }
