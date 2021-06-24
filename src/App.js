@@ -1,6 +1,6 @@
 import './App.css';
 import { useState } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import InputComponent from './Components/MainPage/InputComponent';
 import Cards from './Components/Cards/Cards';
 import Header from './Components/Header/Header';
@@ -61,6 +61,7 @@ function App() {
       info.open_issues = d.open_issues;
       return info
     })
+    console.log(githubInfo)
     setGitInfo(githubInfo)
   }
 
@@ -89,20 +90,22 @@ function App() {
     <div className="App">
       <form>
         <Header />
-        <Route exact path="/welcome">
-          <InputComponent
-            gitName={gitName}
-            typing={typing}
-            require={require}
-            actionDisplay={actionDisplay}
-            blur={handleOnBlur}
-            change={handleOnChange}
-            focus={handleOnFocus} />
-          <Button submit={handleSubmit} disable={disable} />
-        </Route>
-        <Route exact path="/cards">
-          <Cards gitInfo={gitInfo} />
-        </Route>
+        <Switch>
+          <Route path="/cards">
+            <Cards gitInfo={gitInfo} />
+          </Route>
+          <Route path="/home">
+            <InputComponent
+              gitName={gitName}
+              typing={typing}
+              require={require}
+              actionDisplay={actionDisplay}
+              blur={handleOnBlur}
+              change={handleOnChange}
+              focus={handleOnFocus} />
+            <Button submit={handleSubmit} disable={disable} />
+          </Route>
+        </Switch>
 
 
 

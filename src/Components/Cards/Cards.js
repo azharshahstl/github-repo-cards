@@ -1,18 +1,36 @@
 import React from 'react'
 import classes from './Cards.module.css'
+import Spinner from '../Spinner/Spinner'
 
 const Cards = ({ gitInfo }) => {
+
+    console.log(gitInfo)
     let display;
-    if (gitInfo === [] || gitInfo === undefined) {
-        display = <p>Loading....</p>
-        console.log(gitInfo)
+    if (gitInfo === undefined) {
+        display = <Spinner />
     } else {
-        display = <p>It has arrived</p>
-        console.log(gitInfo)
+        display = gitInfo.map(git => {
+            return (<div className={classes.CardsContainer}>
+                <div className={classes.LeftSide}>
+                    <div>{git.description}</div>
+                    <div>{git.Author}</div>
+                    <div>{git.Title}</div>
+                </div>
+                <div className={classes.RightSide}>
+                    <div>{git.forks}</div>
+                    <div>{git.stars}</div>
+                    <div>{git.open_issues}</div>
+                </div>
+            </div>
+            )
+
+        })
+
+
     }
 
     return (
-        <div className={classes.Cards}>{display}</div>
+        <>{display}</>
     )
 }
 
