@@ -1,10 +1,10 @@
 import React from 'react';
 import classes from './Button.module.css'
 
-const Button = ({ submit }) => {
+const Button = ({ submit, disable }) => {
     return (
         <div className={classes.LargeButtonDiv}>
-            <button className={classes.LargeButton} onClick={submit} >
+            <button className={classes.LargeButton} disabled={disable} onClick={submit} >
                 SUBMIT
             </button>
         </div>

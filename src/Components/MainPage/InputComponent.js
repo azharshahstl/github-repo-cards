@@ -1,8 +1,8 @@
 import React from 'react';
-import classes from './MainPage.module.css'
+import classes from './InputComponent.module.css'
 
 
-const MainPage = (props) => {
+const InputComponent = (props) => {
     let checkForSuccess;
 
     if (props.actionDisplay === "success") {
@@ -13,7 +13,8 @@ const MainPage = (props) => {
                 placeholder="Your answer"
                 value={props.value}
                 onBlur={props.blur}
-                onChange={props.change} />
+                onChange={props.change}
+                onFocus={props.focus} />
             <p className={classes.SuccessMessage}>Success! Even a broken clock is right twice a day.</p>
         </>
     } else if (props.actionDisplay === "failure") {
@@ -24,7 +25,8 @@ const MainPage = (props) => {
                 placeholder="Your answer"
                 value={props.value}
                 onBlur={props.blur}
-                onChange={props.change} />
+                onChange={props.change}
+                onFocus={props.focus} />
             <p className={classes.FailureMessage}>You have failed me for the last time.</p>
         </>
     } else if (props.actionDisplay === "default" || props.actionDisplay === "typing") {
@@ -34,7 +36,8 @@ const MainPage = (props) => {
             placeholder="Your answer"
             value={props.value}
             onBlur={props.blur}
-            onChange={props.change} />
+            onChange={props.change}
+            onFocus={props.focus} />
     }
 
     return (
@@ -53,4 +56,4 @@ const MainPage = (props) => {
 
 }
 
-export default MainPage;
+export default InputComponent;
