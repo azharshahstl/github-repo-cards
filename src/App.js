@@ -1,6 +1,6 @@
 import './App.css';
 import { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import InputComponent from './Components/MainPage/InputComponent';
 import Cards from './Components/Cards/Cards';
 import Header from './Components/Header/Header';
@@ -14,6 +14,8 @@ function App() {
   const [actionDisplay, setActionDisplay] = useState("default");
   const [disable, setDisable] = useState(true);
   const [gitInfo, setGitInfo] = useState([])
+
+  let history = useHistory()
 
   const handleOnBlur = () => {
     if (gitName.length === 0) {
@@ -61,7 +63,6 @@ function App() {
       info.open_issues = d.open_issues;
       return info
     })
-    console.log(githubInfo)
     setGitInfo(githubInfo)
   }
 
@@ -77,6 +78,7 @@ function App() {
             .then((response) => response.json())
             .then((data) => {
               createsInfoArray(data);
+              history.push('/cards')
             });
         }
       })
@@ -91,8 +93,12 @@ function App() {
       <form>
         <Header />
         <Switch>
+          <Route exact path="/">
+            <Redirect to="/home" />
+          </Route>
           <Route path="/cards">
             <Cards gitInfo={gitInfo} />
+
           </Route>
           <Route path="/home">
             <InputComponent

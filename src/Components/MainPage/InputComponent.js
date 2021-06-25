@@ -5,19 +5,7 @@ import classes from './InputComponent.module.css'
 const InputComponent = (props) => {
     let checkForSuccess;
 
-    if (props.actionDisplay === "success") {
-        checkForSuccess = <>
-            <input type="text" className={classes.Success}
-                typing={props.typing}
-                id="answer"
-                placeholder="Your answer"
-                value={props.gitName}
-                onBlur={props.blur}
-                onChange={props.change}
-                onFocus={props.focus} />
-            <p className={classes.SuccessMessage}>Success! Even a broken clock is right twice a day.</p>
-        </>
-    } else if (props.actionDisplay === "failure") {
+    if (props.actionDisplay === "failure") {
         checkForSuccess = <>
             <input type="text" className={classes.Failure}
                 typing={props.typing}
