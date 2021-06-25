@@ -1,6 +1,8 @@
 import React from 'react'
 import classes from './Cards.module.css'
 import Spinner from '../Spinner/Spinner'
+import Star from '../../assets/images/star.png'
+import Fork from '../../assets/images/code-fork-symbol.png'
 
 const Cards = ({ gitInfo }) => {
 
@@ -17,8 +19,8 @@ const Cards = ({ gitInfo }) => {
                     <div className={classes.Title}>{git.Title}</div>
                 </div>
                 <div className={classes.RightSide}>
-                    <div className={classes.Forks}>{git.forks} forks</div>
-                    <div className={classes.Stars}>{git.stars} stars</div>
+                    <div className={classes.Forks}><img src={Fork} alt="coding fork" /> {git.forks} forks</div>
+                    <div className={classes.Stars}><span><img src={Star} alt="star" /></span><span>{git.stars} stars</span></div>
                     <div className={classes.Issues}>{git.open_issues} open issues</div>
                 </div>
             </div>
