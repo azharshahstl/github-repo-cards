@@ -9,7 +9,12 @@
 
 }
 
-.LeftSide, .RightSide {
+.LeftSide {
+    display: flex;
+    flex-direction: column;
+}
+
+.RightSide {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -18,23 +23,36 @@
 .LeftSide {
     margin-right: 8rem;
     width: 60%;
+    padding-top: 2rem;
 }
 
 .Description {
+    font-family: 'DM Serif Display', serif;
     padding-left: 10px;
     margin: 0px;
+    padding-bottom: .5rem;
+    color: #081F32;
+    font-size: 22px;
+    line-height: 25px;
+
 
 
 }
 
 .Author {
+    font-family: 'Open Sans', sans-serif;
+    color: #A5ADBB;
     padding-left: 10px;
+    padding-bottom: .5rem;
+    font-size: 16px;
+    line-height: 25px;
 }
 
 .Title {
+    font-family: 'Open Sans', sans-serif;
     padding-left: 10px;
-}
+    color: #6E798C;
+    font-size: 16px;
+    line-height: 25px;
 
-/* .Forks, .Stars, .Issues {
-    padding-top: 2.5px;
-} */
+}
