@@ -73,6 +73,7 @@ function App() {
       .then((userName) => {
         if (userName.message === "Not Found") {
           setActionDisplay("failure");
+          setGitInfo(["No Repos Found"])
         } else {
           fetch(`https://api.github.com/users/${userName.login}/repos`)
             .then((response) => response.json())
@@ -84,10 +85,6 @@ function App() {
         }
       })
   }
-
-
-
-
 
   return (
     <div className="App">

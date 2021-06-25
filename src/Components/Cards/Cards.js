@@ -10,7 +10,10 @@ const Cards = ({ gitInfo }) => {
     let display;
     if (gitInfo === undefined) {
         display = <Spinner />
-    } else {
+    } else if (gitInfo[0] === "No Repos Found")
+        return (<h2>{gitInfo[0]}</h2>)
+
+    else {
         display = gitInfo.map(git => {
             return (<div className={classes.CardsContainer}>
                 <div className={classes.LeftSide}>
