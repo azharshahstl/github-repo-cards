@@ -77,7 +77,8 @@ function App() {
           fetch(`https://api.github.com/users/${userName.login}/repos`)
             .then((response) => response.json())
             .then((data) => {
-              createsInfoArray(data);
+              let slicedData = data.slice(0, 51)
+              createsInfoArray(slicedData);
               history.push('/cards')
             });
         }
